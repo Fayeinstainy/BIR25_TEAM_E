@@ -5,23 +5,14 @@ import urequests as requests
 import json
 import time
 
-# === CONFIG ===
+# Declare links to raw files containing version data and code. 
 RAW_VERSION_URL = "https://raw.githubusercontent.com/Huw311/pico_ota/refs/heads/main/version.json"
 RAW_MAIN_URL    = "https://raw.githubusercontent.com/Huw311/pico_ota/refs/heads/main/main.py"
+# Intterval at which version checks occur
 CHECK_INTERVAL = 10  # seconds
 
-# === Blink Setup ===
-led = machine.Pin("LED", machine.Pin.OUT)
-
-def blink(n=1, delay=10):
-    print(f"Blinking {n} times with {delay}s delay.")
-    for _ in range(n):
-        led.on()
-        time.sleep(delay)
-        led.off()
-        time.sleep(delay)
-
-# === Version Handling ===
+##    NECESSARY FUNCTIONS
+# Find local version 
 def get_local_version():
     print("Fetching local version...")
     try:
@@ -34,6 +25,7 @@ def get_local_version():
         print(f"Error reading local_version.json: {e}")
         return "0.0.0"
 
+# Fetch remote version
 def get_remote_version():
     print(f"Fetching remote version from: {RAW_VERSION_URL}")
     try:
@@ -50,6 +42,7 @@ def get_remote_version():
         print(f"Error getting remote version: {e}")
     return "0.0.0"
 
+# Updates pico firmware
 def update_code():
     print("Attempting to update main.py...")
     try:
@@ -77,18 +70,33 @@ def update_code():
         machine.reset()
     except Exception as e:
         print(f"Update failed: {e}")
+##
 
-# === Main Loop ===
+## USED FOR TESTING
+# setup blink led
+led = machine.Pin("LED", machine.Pin.OUT)
+
+def blink(n=1, delay=10):
+    print(f"Blinking {n} times with {delay}s delay.")
+    for _ in range(n):
+        led.on()
+        time.sleep(delay)
+        led.off()
+        time.sleep(delay)
+##
+
+
+
+# Main loop
 while True:
-    print("Starting the main loop...")
     # Blink LED and check versions periodically
     for _ in range(CHECK_INTERVAL):
         blink(1, delay = 10)
         time.sleep(0.9)
-    local = get_local_version()
-    remote = get_remote_version()
-    print(f"Local version: {local}, Remote version: {remote}")
-    if local != remote:
+    local = get_local_version()     # local version variable
+    remote = get_remote_version()    # Remote version variable
+    
+    if local != remote:    # if versions do not match, then update code
         print("Version mismatch detected, updating code...")
         update_code()
     else:
