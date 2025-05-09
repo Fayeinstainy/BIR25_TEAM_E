@@ -8,11 +8,13 @@ All circuities were **initially developed and tested on a Raspberry Pi Pico**, a
 - **IR LED**: IR333
 - **IR Receiver**: TSOP38238
 - **Microcontroller**: RP2040
-- **IMU**:
+  
 - **Other**: Resistors, Transistors (for LED driving), 38kHz signal source (via PWM)
 ## System Power Architecture
 ![new_robot_power_architecture](https://github.com/user-attachments/assets/9395186a-cf4d-4508-8e1b-a4c97f948f56)
 
+## Software Architecture
+![Software_algorithm drawio-2](https://github.com/user-attachments/assets/e782ca1f-5753-40df-9293-42e803d6a72f)
 ## Motor Control
 ## Navigation
 ## Infrared Communication
@@ -29,4 +31,4 @@ All circuities were **initially developed and tested on a Raspberry Pi Pico**, a
 ## Obstacle Avoidance
 - Based on detecting reflection of IR signal from nearby obstacles.
 - If TSOP382 receives the robot’s own IR pulses reflected from a wall, it triggers a "wall detected" event.
-## Infrared Code Flashing
+##  WI-FI Programming Mode
