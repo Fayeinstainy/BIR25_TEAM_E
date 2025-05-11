@@ -7,10 +7,14 @@ All circuities were **initially developed and tested on a Raspberry Pi Pico**, a
 
 - **IR LED**: IR333
 - **IR Receiver**: TSOP38238
-- **Microcontroller**: RP2040
+- **Microcontroller**: RP2350-based Raspberry Pi Pico 2W
   
 - **Other**: Resistors, Transistors (for LED driving), 38kHz signal source (via PWM)
-## System Power Architecture
+
+## System Architecture
+![final_robot_sys_architecture](https://github.com/user-attachments/assets/d5efba0b-72d6-4d2d-bf08-09f5cb9b66ce)
+
+## Power System Architecture (Normal Operation Mode)
 ![new_robot_power_architecture](https://github.com/user-attachments/assets/9395186a-cf4d-4508-8e1b-a4c97f948f56)
 
 ## Software Architecture
@@ -28,6 +32,10 @@ All circuities were **initially developed and tested on a Raspberry Pi Pico**, a
 3. Signal interpreted as communication or wall proximity.
 
 ## PCB Design
+Designed using kiCAD 9.0, project files, schematic and PCB pdfs under bio_robots/ folder, featuring the following features:
+- Populated: Common anode RGB LED, 3-pairs of IR transmitters and receivers, full bridge rectifier, parallel chargers for the supercapacitors, OR controller.
+- Unpopulated: ICM-20948, 1.8V regulator, level shifters, bypass strategy (U12, D10-D13)
+
 ## Obstacle Avoidance
 - Based on detecting reflection of IR signal from nearby obstacles.
 - If TSOP382 receives the robot’s own IR pulses reflected from a wall, it triggers a "wall detected" event.
