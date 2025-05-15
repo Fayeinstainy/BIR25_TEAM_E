@@ -88,7 +88,7 @@ led.on()
 
 
 
-def reprogram()
+def reprogram():
 
     # Blink LED and check versions periodically
 
@@ -410,5 +410,5 @@ def main():
             sys.exit()
 
        
-#if __name__ == "__main__":
- #    main()
+if __name__ == "__main__":
+    main()
