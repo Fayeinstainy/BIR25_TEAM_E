@@ -129,10 +129,7 @@ def RotateCCW(duty, pwm):
     led.toggle()
     
 def StopMotor():
-    ain1.value(0)
-    ain2.value(0)
-    bin1.value(0)
-    bin2.value(0)
+
     pwma.duty_u16(0)
     pwmb.duty_u16(0)
     led.toggle()
@@ -318,7 +315,7 @@ def main():
             rgb.color=(0,0,0)                       # 关闭LED
             print("turning off...")
             time.sleep(1)
-            reset()
+            sys.exit()
             
     
         
