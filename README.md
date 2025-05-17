@@ -1,7 +1,8 @@
 # Smart Swarmica - A Swarm Ant Robots Project
 ## Overview
 This project is part of a biologically-inspired swarm robot system, where multiple robots cooperate to perform tasks such as locating a wireless charger and coordinating actions using IR signals.
-All circuities were **initially developed and tested on a Raspberry Pi Pico**, and later **finalized on a custom PCB using the same RP2040 microcontroller chip** for integration into the final robot design.
+All circuities were **initially developed and tested on a Raspberry Pi Pico**, and later **finalized on a custom PCB using RP2035 microcontroller chip** for integration into the final robot design.
+The video for the whole development process and final demonstration can be found via this link: https://www.youtube.com/watch?v=agExd-AKbOk 
 
 ## Hardware Component 
 
